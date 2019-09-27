@@ -24,15 +24,15 @@ namespace ArbreGenealogique
             marie.ACommeMere(helene);
 
 
-            Console.WriteLine("jean.Afficher()");
+            Console.WriteLine("\tjean.Afficher()");
             Console.WriteLine();
             jean.Afficher();
             Console.WriteLine("----------------------");
-            Console.WriteLine("helene.Afficher()");
+            Console.WriteLine("\thelene.Afficher()");
             Console.WriteLine();
             helene.Afficher();
             Console.WriteLine("----------------------");
-            Console.WriteLine("jean.AfficherGenealogie()");
+            Console.WriteLine("\tjean.AfficherGenealogie()");
             Console.WriteLine();
             jean.AfficherGenealogie();
         }

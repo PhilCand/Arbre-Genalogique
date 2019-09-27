@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArbreGenealogique
 {
+    
     class Personne
     {
         private string _nom;
@@ -17,7 +18,6 @@ namespace ArbreGenealogique
         private bool _vivant;
         private bool _aUnPere;
         private bool _aUneMere;
-
 
         public string Nom { get => _nom; set => _nom = value; }
         public string Prenom { get => _prenom; set => _prenom = value; }
@@ -53,28 +53,32 @@ namespace ArbreGenealogique
             DateDeDeces = new Date(jour, mois, annee);
             Vivant = false;
         }
+        public static int nbTour=0;
+        public static string space = new String(' ', nbTour);
         public void Afficher()
         {
+            string space = new String(' ', nbTour);
             if (!Vivant)
-            Console.WriteLine($"{Prenom} {Nom}\nné(e) le {DateDeNaissance.VersChaine()}\ndécédé(e) le {DateDeDeces.VersChaine()}");
+            Console.WriteLine($"{space}{Prenom} {Nom}\n{space}né(e) le {DateDeNaissance.VersChaine()}\n{space}décédé(e) le {DateDeDeces.VersChaine()}");
             else
-            Console.WriteLine($"{Prenom} {Nom}\nné(e) le {DateDeNaissance.VersChaine()}");
+            Console.WriteLine($"{space}{Prenom} {Nom}\n{space}né(e) le {DateDeNaissance.VersChaine()}");
         }
         public void AfficherGenealogie()
         {
-            Afficher();
+            string space = new String(' ', nbTour);
+            Afficher();            
             if (AUnPere)
             {
-                Console.WriteLine("\tA comme père :");
+                nbTour += 2;
+                Console.WriteLine($"{space}A comme père :");                
                 Pere.AfficherGenealogie();
             }
             if (AUneMere)
-            {
-                Console.WriteLine("\tA comme mère :");
+            {        
+                if(!AUnPere) nbTour += 2;
+                Console.WriteLine($"{space}A comme mère :");                
                 Mere.AfficherGenealogie();
-            }
-
-
+            }  
         }
     }
 }
